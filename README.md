@@ -11,7 +11,7 @@ Alternate to:
 * [grunt-cafe-mocha](https://github.com/jdavis/grunt-cafe-mocha)
 * [grunt-mocha-hack](https://github.com/gregrperkins/grunt-mocha-hack)
 
-If you use `grunt` from inside your IDE and you have problems with the default `mocha` reporters funky usage of terminal output command then consider my basic [mocha-unfunk-reporter](https://github.com/Bartvds/mocha-unfunk-reporter) alterate that only uses plain console.logs().
+If you use `grunt` from inside your IDE and you have problems with the default `mocha` reporters' funky usage of terminal output commands then consider my basic [mocha-unfunk-reporter](https://github.com/Bartvds/mocha-unfunk-reporter) alterate that only uses plain console.logs().
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -24,16 +24,31 @@ npm install grunt-mocha-spawn --save-dev
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
-```js
+````js
 grunt.loadNpmTasks('grunt-mocha-spawn');
-```
+````
 
 ## The "mocha_spawn" task
 
 ### Overview
 In your project's Gruntfile, add a section named `mocha_spawn` to the data object passed into `grunt.initConfig()`.
 
-```js
+````js
+grunt.initConfig({
+  mocha_spawn: {
+    options: {
+      reporter: 'spec'
+    },
+    your_target: {
+      src: ['test/*.test.js']
+    }
+  }
+})
+````
+
+The options are passed as-is to the `mocha` module:
+
+````js
 grunt.initConfig({
   mocha_spawn: {
     options: {
@@ -45,44 +60,15 @@ grunt.initConfig({
       reporter: 'tap'
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+      src: ['test/*.test.js']
     },
-  },
+  }
 })
-```
+````
 
-### Usage Examples
+## Versions
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  mocha_spawn: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  mocha_spawn: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+* 0.1.0 - original release
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
