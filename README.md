@@ -39,9 +39,7 @@ grunt.initConfig({
     options: {
       reporter: 'spec'
     },
-    your_target: {
-      src: ['test/*.test.js']
-    }
+    your_target: ['test/*.test.js']
   }
 })
 ````
@@ -59,9 +57,7 @@ grunt.initConfig({
       ui: 'bdd',
       reporter: 'tap'
     },
-    your_target: {
-      src: ['test/*.test.js']
-    },
+    your_target: ['test/*.test.js']
   }
 })
 ````
