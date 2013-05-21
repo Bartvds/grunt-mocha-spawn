@@ -11,6 +11,7 @@
 module.exports = function (grunt) {
 
 	var path = require('path');
+	var util = require('util');
 	var child_process = require('child_process');
 
 	grunt.registerMultiTask('mocha_spawn', 'spawn mocha in node', function () {
@@ -50,12 +51,9 @@ module.exports = function (grunt) {
 			grunt.fail.warn('cannot locate runner ' + runner);
 		}
 		var result;
-		var params = {
-			tests: tests,
-			options: options
-		};
+		var params = [];
 
-		var child = child_process.fork(runner, [JSON.stringify(params)], {cwd: '.'});
+		var child = child_process.fork(runner, params, {cwd: '.'});
 		if (!child) {
 			grunt.fail.warn('cannot spawn ' + child);
 			done();
@@ -63,7 +61,11 @@ module.exports = function (grunt) {
 		}
 
 		child.on('message', function (data) {
-			if (data.type === 'result') {
+			grunt.log.writeln('message');
+			if (data.type === 'init') {
+				child.send({type:'tests', options:options, tests: tests});
+			}
+			else if (data.type === 'result') {
 				result = data;
 			}
 		});
