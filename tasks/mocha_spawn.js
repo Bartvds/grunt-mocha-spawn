@@ -61,7 +61,6 @@ module.exports = function (grunt) {
 		}
 
 		child.on('message', function (data) {
-			grunt.log.writeln('message');
 			if (data.type === 'init') {
 				child.send({type:'tests', options:options, tests: tests});
 			}
