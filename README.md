@@ -1,17 +1,19 @@
 # grunt-mocha-spawn
 
-> run mocha tests in grunt using a node sub-process so async assertion failures won't crash grunt
+[![Dependency Status](https://gemnasium.com/Bartvds/grunt-mocha-spawn.png)](https://gemnasium.com/Bartvds/grunt-mocha-spawn) [![NPM version](https://badge.fury.io/js/grunt-mocha-spawn.png)](http://badge.fury.io/js/grunt-mocha-spawn)
 
-This is temporary until regular mocha runners for grunt solve their async-error bugs with definitive solution
+> Run mocha tests in grunt using a node sub-process so async assertion failures won't crash grunt
 
-Alternate to:
+**Deprecated!** This was a temporary module to bypass a bug in the regular grunt + mocha runners who all suffered a nasty bug that is solved by now.
 
-* [grunt-mocha-test](https://github.com/pghalliday/grunt-mocha-test) (has a test suite, fixed bug with hack)
+You probably want to use the fully featured and tested [grunt-mocha-test](https://github.com/pghalliday/grunt-mocha-test) instead, unless you have specific reasons not to.
+
+Alternates:
+
+* [grunt-mocha-test](https://github.com/pghalliday/grunt-mocha-test) (solid with test and features)
 * [grunt-simple-mocha](https://github.com/yaymukund/grunt-simple-mocha) (simple)
-* [grunt-cafe-mocha](https://github.com/jdavis/grunt-cafe-mocha)
+* [grunt-cafe-mocha](https://github.com/jdavis/grunt-cafe-mocha) (buggy)
 * [grunt-mocha-hack](https://github.com/gregrperkins/grunt-mocha-hack) (fixed bug with hack)
-
-If you use `grunt` from inside your IDE and you have problems with the default `mocha` reporters' funky usage of terminal output commands then consider my basic [mocha-unfunk-reporter](https://github.com/Bartvds/mocha-unfunk-reporter) alterate that only uses plain console.logs().
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -64,6 +66,7 @@ grunt.initConfig({
 
 ## Versions
 
+* 0.1.2 - recommend grunt-mocha-test
 * 0.1.1 - pass options through process/child channel instead of pushing JSON through cli
 * 0.1.0 - original release
 

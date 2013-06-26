@@ -1,7 +1,7 @@
 {
   "name": "grunt-mocha-spawn",
   "description": "run mocha tests in grunt using a node sub-process so async assertion failures won't crash grunt",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/Bartvds/grunt-mocha-spawn",
   "author": {
     "name": "Bart van der Schoor",
@@ -29,7 +29,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "mocha": "~1.9.0"
+    "mocha": "~1.11.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",
